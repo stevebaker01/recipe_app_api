@@ -77,9 +77,9 @@ class ModelTests(TestCase):
     @patch('uuid.uuid4')
     def test_recipe_file_name_uuid(self, mock_uuid):
         """Test that image is saved in the correct location."""
-        this_uuid = 'test-uuid'
-        mock_uuid.return_value = this_uuid
+        uuid = 'test-uuid'
+        mock_uuid.return_value = uuid
         file_path = models.recipe_image_file_path(None, 'myimage.jpg')
 
-        exp_path = f'upload/recipe/{this_uuid}.jpg' % this_uuid
+        exp_path = f'uploads/recipe/{uuid}.jpg'
         self.assertEqual(file_path, exp_path)
